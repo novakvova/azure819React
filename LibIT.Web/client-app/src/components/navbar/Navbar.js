@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Navbar extends Component {
 
     render() {
+        console.log("navbar props",this.props);
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link className="navbar-brand" to="/">=Навігація=</Link>
@@ -47,4 +49,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapState=(stateRedux)=>{
+    return {
+      isAuthenticated: stateRedux.login.isAuthenticated
+    }
+  }
+
+export default connect(mapState)(Navbar);

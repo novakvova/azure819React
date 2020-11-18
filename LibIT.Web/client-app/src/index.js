@@ -10,11 +10,18 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import configureStore, {history} from './store/configureStore';
+import * as loginActions from './components/auth/login/actions';
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
 const initialState = window.initialReduxState;
 const store = configureStore(history, initialState);
 
+if(localStorage.authToken) {
+  let data = {
+    token: localStorage.authToken
+  };
+  loginActions.loginByJWT(data, store.dispatch);
+}
 // <React.StrictMode>
 // </React.StrictMode>
 ReactDOM.render(
