@@ -51,7 +51,8 @@ class Navbar extends Component {
 
 const mapState=(stateRedux)=>{
     return {
-      isAuthenticated: stateRedux.login.isAuthenticated
+      isAuthenticated: stateRedux.login.isAuthenticated,
+      user: stateRedux.login.user
     }
   }
 
